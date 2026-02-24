@@ -30,4 +30,11 @@ public class BoardService {
 
         return dtoList;
     }
+
+    public BoardDto.Res postDetail(Long idx) {
+        Board board = boardRepository.findById(idx).orElseThrow(
+                () -> new RuntimeException()
+        );
+        return BoardDto.Res.from(board);
+    }
 }

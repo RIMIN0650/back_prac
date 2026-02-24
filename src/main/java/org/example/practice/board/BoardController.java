@@ -32,5 +32,9 @@ public class BoardController {
         return ResponseEntity.ok(dto);
     }
 
-
+    @GetMapping("/detail/{idx}")
+    public ResponseEntity detail(@PathVariable Long idx) {
+        BoardDto.Res dto = boardService.postDetail(idx);
+        return ResponseEntity.ok(dto);
+    }
 }
