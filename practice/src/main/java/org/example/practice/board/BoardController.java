@@ -1,12 +1,12 @@
 package org.example.practice.board;
 
 import lombok.RequiredArgsConstructor;
+import org.example.practice.board.model.Board;
 import org.example.practice.board.model.BoardDto;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/board")
@@ -22,9 +22,11 @@ public class BoardController {
         return ResponseEntity.ok("게시물 등록 성공");
     }
 
-
-
-
+    @GetMapping("/list")
+    public ResponseEntity list() {
+        List<BoardDto.Res> dto = boardService.list();
+        return ResponseEntity.ok(dto);
+    }
 
 
 }

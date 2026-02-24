@@ -1,6 +1,6 @@
 package org.example.practice.board.model;
 
-import lombok.Setter;
+import lombok.*;
 
 public class BoardDto {
 
@@ -16,4 +16,23 @@ public class BoardDto {
                     .build();
         }
     }
+
+
+    @Getter
+    @Builder
+    public static class Res {
+        private Long idx;
+        private String title;
+        private String contents;
+
+        public static Res from(Board entity) {
+            return Res.builder()
+                    .idx(entity.getIdx())
+                    .title(entity.getTitle())
+                    .contents(entity.getContents())
+                    .build();
+        }
+
+    }
+
 }
