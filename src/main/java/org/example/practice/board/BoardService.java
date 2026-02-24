@@ -51,7 +51,7 @@ public class BoardService {
     }
 
     @Transactional
-    public void delete(Long idx) {
+    public void remove(Long idx) {
         Board board = boardRepository.findById(idx)
                 .orElseThrow(() -> new RuntimeException("게시글 없음")
         );

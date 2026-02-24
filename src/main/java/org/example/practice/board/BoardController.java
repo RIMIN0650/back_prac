@@ -45,9 +45,9 @@ public class BoardController {
         return ResponseEntity.ok("게시물 수정 성공");
     }
 
-    @DeleteMapping("/delete/{idx}")
-    public ResponseEntity delete(@PathVariable Long idx) {
-        boardService.delete(idx);
+    @DeleteMapping("/remove/{idx}")
+    public ResponseEntity remove(@PathVariable Long idx) {
+        boardService.remove(idx);
         return ResponseEntity.ok("게시물 삭제 성공");
     }
 }
