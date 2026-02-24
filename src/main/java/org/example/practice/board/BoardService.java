@@ -42,11 +42,22 @@ public class BoardService {
     @Transactional
     public void modify(Long idx, BoardDto.PostReq dto) {
 
-        Board board = boardRepository.findById(idx).orElseThrow(
-                () -> new RuntimeException("게시글 없음")
+        Board board = boardRepository.findById(idx)
+                .orElseThrow(() -> new RuntimeException("게시글 없음")
         );
 
         board.update(dto.getTitle(), dto.getContents());
+
+    }
+
+    @Transactional
+    public void delete(Long idx) {
+        Board board = boardRepository.findById(idx)
+                .orElseThrow(() -> new RuntimeException("게시글 없음")
+        );
+
+        boardRepository.delete(board);
+
 
     }
 }

@@ -1,6 +1,7 @@
 package org.example.practice.board;
 
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.Response;
 import org.example.practice.board.model.Board;
 import org.example.practice.board.model.BoardDto;
 import org.springframework.http.ResponseEntity;
@@ -42,5 +43,11 @@ public class BoardController {
     public ResponseEntity modify(@PathVariable Long idx, @RequestBody BoardDto.PostReq dto) {
         boardService.modify(idx, dto);
         return ResponseEntity.ok("게시물 수정 성공");
+    }
+
+    @DeleteMapping("/delete/{idx}")
+    public ResponseEntity delete(@PathVariable Long idx) {
+        boardService.delete(idx);
+        return ResponseEntity.ok("게시물 삭제 성공");
     }
 }
