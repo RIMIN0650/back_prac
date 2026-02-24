@@ -37,4 +37,10 @@ public class BoardController {
         BoardDto.Res dto = boardService.postDetail(idx);
         return ResponseEntity.ok(dto);
     }
+
+    @PutMapping("/modify/{idx}")
+    public ResponseEntity modify(@PathVariable Long idx, @RequestBody BoardDto.PostReq dto) {
+        boardService.modify(idx, dto);
+        return ResponseEntity.ok("게시물 수정 성공");
+    }
 }

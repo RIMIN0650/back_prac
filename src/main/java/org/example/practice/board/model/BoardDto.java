@@ -4,6 +4,7 @@ import lombok.*;
 
 public class BoardDto {
 
+    @Getter
     @Setter
     public static class PostReq {
         private String title;
@@ -16,7 +17,6 @@ public class BoardDto {
                     .build();
         }
     }
-
 
     @Getter
     @Builder

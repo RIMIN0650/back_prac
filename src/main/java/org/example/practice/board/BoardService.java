@@ -1,5 +1,6 @@
 package org.example.practice.board;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.example.practice.board.model.Board;
 import org.example.practice.board.model.BoardDto;
@@ -36,5 +37,16 @@ public class BoardService {
                 () -> new RuntimeException()
         );
         return BoardDto.Res.from(board);
+    }
+
+    @Transactional
+    public void modify(Long idx, BoardDto.PostReq dto) {
+
+        Board board = boardRepository.findById(idx).orElseThrow(
+                () -> new RuntimeException("게시글 없음")
+        );
+
+        board.update(dto.getTitle(), dto.getContents());
+
     }
 }
